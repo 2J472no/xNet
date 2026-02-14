@@ -45,18 +45,19 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-2 publication-title">LR²Depth: Large-Region Aggregation at Low Resolution for Efficient Monocular Depth Estimation</h1>
-          <h1 class="title is-2 publication-title">(IROS 2025)</h1>
+          <h1 class="title is-2 publication-title">Is Pre-training Applicable to the Decoder for Dense Prediction?</h1>
+          <h1 class="title is-2 publication-title">(ICRA 2026)</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://2j472no.github.io">
               Chao Ning</a><sup>1,2</sup>,</span>
+                        <span class="author-block">
+            <a href="https://ganwanshui.github.io">
+              Wanshui Gan</a>
+            <sup>1,2</sup>,</span>
             <span class="author-block">
               Weihao Xuan<sup>1,2</sup>,</span>
-            <span class="author-block">
-              <a href="https://ganwanshui.github.io">
-              Wanshui Gan</a>
-              <sup>1,2</sup>,</span>
+
             <span class="author-block">
               <a href="https://naotoyokoya.com/">
               Naoto Yokoya</a>
@@ -114,14 +115,6 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 align="center"  class="title is-3">Demo</h2>
-
-        <h3 align="center" class="title is-4">MDE using LR²Depth on low power mobile device</h3>
-        <div class="content has-text-justified">
-        </div>
-        
-      <div align="center" style="margin-top:20px;" style="margin-bottom:80px;">
-        <img style='height: auto; width:10%; object-fit: contain' src="static/images/QR.png" alt="o_image">
-      </div>
         <div class="content has-text-centered">
           <!-- <video poster='static/images/nuscenes_demo.jpg'
                  id="replay-video"
@@ -131,8 +124,8 @@
             <source src="static/videos/nuscenes_demo.mp4"
                     type="video/mp4">
           </video> -->
-          <video id="replay-video" controls muted width="46%">
-            <source src="static/videos/mobile.mp4" type="video/mp4">
+          <video id="replay-video" controls muted width="50%">
+            <source src="static/videos/feature.mp4" type="video/mp4">
           </video>
 
           <!-- <div align="center" style="margin-top:20px;" style="margin-bottom:80px;"> -->
@@ -153,12 +146,8 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-          Monocular depth estimation (MDE) is crucial for various computer vision applications, but existing methods often struggle to balance inference speed and accuracy when processing large-region visual information.
-          This paper introduces LR²Depth, a novel MDE method that addresses this challenge by utilizing large-kernel convolution on low-resolution feature maps for efficient large-region feature aggregation. 
-          Our approach leverages the fact that each pixel on low-resolution feature maps corresponds to a larger region of the original image, allowing for fast and accurate depth predictions at a lower inference cost. Extensive experiments on NYU-Depth-V2, KITTI, and SUN RGB-D datasets demonstrate that LR$^2$Depth not only achieves state-of-the-art performance but also operates approximately twice as fast as previous MDE methods. Notably, at the time of submission, 
-          LR²Depth secured the top-1 position on the
-           <a href="https://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_prediction">KITTI depth prediction online benchmark</a>
-           in 2024.
+          Encoder-decoder networks are commonly used model architectures for dense prediction tasks, where the encoder typically employs a model pre-trained on upstream tasks, while the decoder is often either randomly initialized or pre-trained on other tasks. In this paper, we introduce ×Net, a novel framework that leverages a model pre-trained on upstream tasks as the decoder, fostering a ``pre-trained encoder × pre-trained decoder'' collaboration within the encoder-decoder network. ×Net effectively address the challenges associated with using pre-trained models in the decoding, applying the learned representations to enhance the decoding process. This enables the model to achieve more precise and high-quality dense predictions.
+By simply coupling the pre-trained encoder and pre-trained decoder, ×Net distinguishes itself as a highly promising approach. Remarkably, it achieves this without relying on decoding-specific structures or task-specific algorithms. Despite its streamlined design, ×Net outperforms advanced methods in tasks such as monocular depth estimation and semantic segmentation, achieving state-of-the-art performance particularly in monocular depth estimation.
           </p>
         </div>
       </div>
@@ -166,7 +155,7 @@
   </div>
 
 <div align="center" style="margin-top:20px;" style="margin-bottom:80px;">
-  <img style='height: auto; width:30%; object-fit: contain' src="static/images/sota.png" alt="o_image">
+  <img style='height: auto; width:55%; object-fit: contain' src="static/images/start.png" alt="o_image">
 </div>
 
 
@@ -178,17 +167,17 @@
         <h2 class="title is-3">Method</h2>
         <div class="content has-text-justified">
           <p>
-            <b>Overview of LR²Depth. 
-Left: The workflow and fundamental unit of LR²Depth. LR²Depth employs large convolution kernels exclusively at low resolution stages, aggregating information over large region with less budgets.
-Right: The impact of identically sized convolutional kernels on feature maps of different resolutions. It is evident that in low-resolution feature map, the kernel can easily traverse object to extract distance information.
-          </p>
+            <b>Overview of the image classification model (left), encoder-decoder network (middle), and our ×Net (right).
+                The pre-trained model represents the commonly used hierarchical structure.
+        The channels are scaled with model size; detailed settings are available in our repository.
+         </p>
         </div>
       </div>
     </div>
   </div>
 
 <div align="center" style="margin-top:20px;" style="margin-bottom:80px;">
-<img style='height: auto; width:65%; object-fit: contain' src="static/images/Overview.png" alt="overview_image">
+<img style='height: auto; width:55%; object-fit: contain' src="static/images/Overview.png" alt="overview_image">
 </div>
 
 
@@ -210,11 +199,40 @@ Right: The impact of identically sized convolutional kernels on feature maps of 
             We experimented in compared with the mIoU and IoU metrics and showed the render speed comparison.
         </div> -->
 
-        <img style='height: auto; width:100%; object-fit: contain' src="static/images/NYU-t.png" alt="nyu-results">
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1; height:260px; display:flex; align-items:center; justify-content:center;">
+            <img style="max-width:100%; max-height:100%; object-fit:contain;" src="static/images/t2.png" alt="t2">
+          </div>
+          <div style="flex:1; height:260px; display:flex; align-items:center; justify-content:center;">
+            <img style="max-width:100%; max-height:100%; object-fit:contain;" src="static/images/t3.png" alt="t3">
+          </div>
+        </div>
+
         <div align="center" style="margin-top:20px;"></div>
-        <img style='height: auto; width:100%; object-fit: contain' src="static/images/KITTI-t.png" alt="kitti-results">
+
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1; height:260px; display:flex; align-items:center; justify-content:center;">
+            <img style="max-width:100%; max-height:100%; object-fit:contain;" src="static/images/t4.png" alt="t4">
+          </div>
+          <div style="flex:1; height:260px; display:flex; align-items:center; justify-content:center;">
+            <img style="max-width:100%; max-height:100%; object-fit:contain;" src="static/images/t5.png" alt="t5">
+          </div>
+        </div>
+
         <div align="center" style="margin-top:20px;"></div>
-        <img style='height: auto; width:100%; object-fit: contain' src="static/images/SUN-t.png" alt="sun-results">
+
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1; height:260px; display:flex; align-items:center; justify-content:center;">
+            <img style="max-width:100%; max-height:100%; object-fit:contain;" src="static/images/t6.png" alt="t6">
+          </div>
+          <div style="flex:1; height:260px; display:flex; align-items:center; justify-content:center;">
+            <img style="max-width:100%; max-height:100%; object-fit:contain;" src="static/images/t7.png" alt="t7">
+          </div>
+        </div>
+        
+        <div align="center" style="margin-top:20px;"></div>
+
+        <img style='height: auto; width:60%; object-fit: contain' src="static/images/t8.png" alt="t8">
         <div align="center" style="margin-top:20px;"></div>
  
         <h3 align="center" class="title is-4">Qualitative comparison</h3>
@@ -223,13 +241,15 @@ Right: The impact of identically sized convolutional kernels on feature maps of 
           We conduct depth estimation compared with all the methods in scale-aware metric.
         </div> -->
 
-        <img style='height: auto; width:100%; object-fit: contain' src="static/images/NYU.png" alt="nyu-v-results">
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/f1.png" alt="f1">
         <div align="center" style="margin-top:20px;"></div>
-        <img style='height: auto; width:100%; object-fit: contain' src="static/images/KITTI.png" alt="kitti-v-results">
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/f2.png" alt="f2">
         <div align="center" style="margin-top:20px;"></div>
 
-        <h3 align="center" class="title is-4">3D Reconstruction</h3>
-        <img style='height: auto; width:100%; object-fit: contain' src="static/images/3D.png" alt="3d-v-results">
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/f3.png" alt="f3">
+        <div align="center" style="margin-top:20px;"></div>
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/f4.png" alt="f4">
+        <div align="center" style="margin-top:20px;"></div>
 
 
       </div>
