@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="LR²Depth: Large-Region Aggregation at Low Resolution for Efficient Monocular Depth Estimation">
+  <meta name="keywords" content="Monocular depth estimation, efficiency">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LR²Depth: Large-Region Aggregation at Low Resolution for Efficient Monocular Depth Estimation</title>
+ 
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">LR²Depth: Large-Region Aggregation at Low Resolution for Efficient Monocular Depth Estimation</h1>
+          <h1 class="title is-2 publication-title">(IROS 2025)</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://2j472no.github.io">
+              Chao Ning</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              Weihao Xuan<sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://ganwanshui.github.io">
+              Wanshui Gan</a>
+              <sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://naotoyokoya.com/">
+              Naoto Yokoya</a>
+              <sup>1,2,*</sup></span>
+          </div>
+
+          <div align="center" style="margin-bottom:20px;">
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The University of Tokyo &nbsp;&nbsp;</span>
+            <span class="author-block"><sup>2</sup>RIKEN &nbsp;&nbsp;</span>
+          </div>
+          </div>
+
+          <!-- <h1 style="font-size:24px;font-weight:bold">arXiv</h1>
+          <div class="column has-text-centered"> -->
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="http://arxiv.org/abs/2408.11447"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2408.11447"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://github.com/2J472no/MDE.git"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 align="center"  class="title is-3">Demo</h2>
+
+        <h3 align="center" class="title is-4">MDE using LR²Depth on low power mobile device</h3>
+        <div class="content has-text-justified">
+        </div>
+        
+      <div align="center" style="margin-top:20px;" style="margin-bottom:80px;">
+        <img style='height: auto; width:10%; object-fit: contain' src="static/images/QR.png" alt="o_image">
+      </div>
+        <div class="content has-text-centered">
+          <!-- <video poster='static/images/nuscenes_demo.jpg'
+                 id="replay-video"
+                 controls
+                 muted
+                 width="46%">
+            <source src="static/videos/nuscenes_demo.mp4"
+                    type="video/mp4">
+          </video> -->
+          <video id="replay-video" controls muted width="46%">
+            <source src="static/videos/mobile.mp4" type="video/mp4">
+          </video>
+
+          <!-- <div align="center" style="margin-top:20px;" style="margin-bottom:80px;"> -->
+            <!-- <img style='height: auto; width:85%; object-fit: contain' src="static/images/bar.png" alt="overview_image"> -->
+          <!-- </div> -->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Monocular depth estimation (MDE) is crucial for various computer vision applications, but existing methods often struggle to balance inference speed and accuracy when processing large-region visual information.
+          This paper introduces LR²Depth, a novel MDE method that addresses this challenge by utilizing large-kernel convolution on low-resolution feature maps for efficient large-region feature aggregation. 
+          Our approach leverages the fact that each pixel on low-resolution feature maps corresponds to a larger region of the original image, allowing for fast and accurate depth predictions at a lower inference cost. Extensive experiments on NYU-Depth-V2, KITTI, and SUN RGB-D datasets demonstrate that LR$^2$Depth not only achieves state-of-the-art performance but also operates approximately twice as fast as previous MDE methods. Notably, at the time of submission, 
+          LR²Depth secured the top-1 position on the
+           <a href="https://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_prediction">KITTI depth prediction online benchmark</a>
+           in 2024.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div align="center" style="margin-top:20px;" style="margin-bottom:80px;">
+  <img style='height: auto; width:30%; object-fit: contain' src="static/images/sota.png" alt="o_image">
+</div>
+
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>Overview of LR²Depth. 
+Left: The workflow and fundamental unit of LR²Depth. LR²Depth employs large convolution kernels exclusively at low resolution stages, aggregating information over large region with less budgets.
+Right: The impact of identically sized convolutional kernels on feature maps of different resolutions. It is evident that in low-resolution feature map, the kernel can easily traverse object to extract distance information.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div align="center" style="margin-top:20px;" style="margin-bottom:80px;">
+<img style='height: auto; width:65%; object-fit: contain' src="static/images/Overview.png" alt="overview_image">
+</div>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 align="center"  class="title is-3">Main Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxx. -->
+          </p>
+        </div>
+
+
+        <h3 align="center" class="title is-4">Quantitative comparison</h3>
+
+        <!-- <div class="content has-text-justified">
+            We experimented in compared with the mIoU and IoU metrics and showed the render speed comparison.
+        </div> -->
+
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/NYU-t.png" alt="nyu-results">
+        <div align="center" style="margin-top:20px;"></div>
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/KITTI-t.png" alt="kitti-results">
+        <div align="center" style="margin-top:20px;"></div>
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/SUN-t.png" alt="sun-results">
+        <div align="center" style="margin-top:20px;"></div>
+ 
+        <h3 align="center" class="title is-4">Qualitative comparison</h3>
+
+        <!-- <div class="content has-text-justified">
+          We conduct depth estimation compared with all the methods in scale-aware metric.
+        </div> -->
+
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/NYU.png" alt="nyu-v-results">
+        <div align="center" style="margin-top:20px;"></div>
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/KITTI.png" alt="kitti-v-results">
+        <div align="center" style="margin-top:20px;"></div>
+
+        <h3 align="center" class="title is-4">3D Reconstruction</h3>
+        <img style='height: auto; width:100%; object-fit: contain' src="static/images/3D.png" alt="3d-v-results">
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{gan2024comprehensive,
+      title={A Comprehensive Framework for 3D Occupancy Estimation in Autonomous Driving},
+      author={Gan, Wanshui and Mo, Ningkai and Xu, Hongbin and Yokoya, Naoto},
+      journal={IEEE Transactions on Intelligent Vehicles},
+      year={2024},
+      publisher={IEEE}}
+
+      @article{gan2024gaussianocc,
+      title={LR²Depth: Large-Region Aggregation at Low Resolution for Efficient Monocular Depth Estimation},
+      author={Gan, Wanshui and Liu, Fang and Xu, Hongbin and Mo, Ningkai and Yokoya, Naoto},
+      journal={arXiv preprint arXiv:2408.11447},
+      year={2024}}
+</code></pre>
+  </div>
+</section> -->
+    
+
+
+</body>
+</html>
